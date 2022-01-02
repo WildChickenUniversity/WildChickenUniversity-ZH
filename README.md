@@ -1,5 +1,6 @@
 ![logo](https://wcu.edu.pl/assets/Wild_Chicken.svg)
 Welcome to the **Official** GitHub repo of [Wild Chicken University](https://wcu.edu.pl).
+欢迎来到Wild Chicken University中文版网站，内容正在准备中
 
 We offer **FREE** admission offers in PDF. This is not a REAL admission offer, but it can certainly make you feel better since you've got “somewhere” to go. Head over to [admission portal](https://admission.wcu.edu.pl) to get your admission offer today!
 
