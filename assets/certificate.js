@@ -4,8 +4,8 @@ async function fillForm(fname, lname, major) {
   // Fetch the PDF with form fields
   const formUrl = "https://cdn.jsdelivr.net/gh/WildChickenUniversity/WildChickenUniversity/assets/template_diploma.pdf"
   // const formUrl = "https://raw.githubusercontent.com/WildChickenUniversity/WildChickenUniversity/master/assets/template_diploma.pdf"
-  const englishUnicode = /^[0-9a-zA-Z]+$/;
-  console.log(`Is user input in English: ${englishUnicode.test(major)}`);
+  const englishUnicode = /^[0-9a-zA-Z\s]+$/;
+  console.log(`Is user input in pure English: ${englishUnicode.test(major)}`);
   const formPdfBytes = await fetch(formUrl).then((res) => res.arrayBuffer());
   const pdfDoc = await PDFDocument.load(formPdfBytes);
   const fontkit = window.fontkit;
@@ -24,7 +24,10 @@ async function fillForm(fname, lname, major) {
   const sourceHanSerifByte = await fetch(sourceHanSerifUrl).then(res => res.arrayBuffer());
   const sourceHanSerif = await pdfDoc.embedFont(sourceHanSerifByte);
 
-  console.log(`Today is ${myDate.toDateString().substring(4)}, generating for ${fname} ${lname} with major ${major}`);
+  // if user input in English, then use chomskyFont.
+  const font = englishUnicode.test(major) ? chomskyFont : sourceHanSerif;
+
+  console.log(`Today is ${myDate.toDateString().substring(4)}, generating for ${fname} ${lname} with major ${major} and font ${font.name}`);
   // Get the form containing all the fields
   const form = pdfDoc.getForm();
   // Get all fields in the PDF by their names
@@ -34,8 +37,6 @@ async function fillForm(fname, lname, major) {
   // Fill in the name field
   majorField.setText(major);
   nameField.setText(`${fname} ${lname}`);
-  const font = englishUnicode.test(major) ? chomskyFont : sourceHanSerif;
-  console.log(font)
   const fontSize = 31;
   majorField.updateAppearances(font);
   nameField.updateAppearances(chomskyFont);
