@@ -10,12 +10,10 @@ async function fillForm(fname, lname, major) {
   const pdfDoc = await PDFDocument.load(formPdfBytes);
   const fontkit = window.fontkit;
   pdfDoc.registerFontkit(fontkit);
-  const url = 'https://pdf-lib.js.org/assets/ubuntu/Ubuntu-R.ttf'
-  const ubuntuBytes = await fetch(url).then(res => res.arrayBuffer())
-  const font5 = await pdfDoc.embedFont(ubuntuBytes)
+  
   // Copyright (c) 2018, Fredrick R. Brennan (<copypaste@kittens.ph>)
   // https://github.com/ctrlcctrlv/chomsky, licensed under  OFL-1.1
-  const chomskyFontUrl = "https://cdn.jsdelivr.net/gh/WildChickenUniversity/WildChickenUniversity/assets/fonts/Chomsky.otf";
+  const chomskyFontUrl = "https://cdn.jsdelivr.net/gh/WildChickenUniversity/WildChickenUniversity/assets/fonts/Chomsky.woff2";
   const chomskyFontByte = await fetch(chomskyFontUrl).then(res => res.arrayBuffer());
   const chomskyFont = await pdfDoc.embedFont(chomskyFontByte);
   
@@ -48,7 +46,7 @@ async function fillForm(fname, lname, major) {
   // Trigger the browser to download the PDF document
   download(
     pdfBytes,
-    `WCU_Undergraduation_Certificate_${fname}_${lname}_${myDate.toDateString().substring(4)}.pdf`,
+    `WCU_Graduation_Certificate_${fname}_${lname}_${myDate.toDateString().substring(4).replace(/\s/g, '_')}.pdf`,
     "application/pdf"
   );
 
