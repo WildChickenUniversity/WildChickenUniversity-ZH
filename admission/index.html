@@ -23,7 +23,7 @@
     </div>
     <div class="bottom-bar contain-1120 group">
       <div id="department">
-        <h1><a href="#">Undergraduate Admissions</a></h1>
+        <h1><a href="#">Undergraduate Admissions 本科招生</a></h1>
       </div>
     </div>
   </header>
@@ -34,7 +34,7 @@
         <div class="part_rows_container col-1" data-col="1">
           <section class="hero">
             <div class="banner_text small_text">
-              <p>Welcome</p>
+              <p>Welcome 欢迎</p>
             </div>
           </section>
           <ul class="subtabs">
@@ -43,7 +43,7 @@
         </div>
       </div>
       <form action="result.html" method="GET">
-        <p class="success">To get your admission letter, please enter your first name and last name.</p>
+        <p class="success">请输入姓名获取录取通知书</p>
         <table class="plain">
           <colgroup>
             <col style="width: 150px;">
@@ -51,19 +51,19 @@
           </colgroup>
           <tbody>
             <tr>
-              <th><label for="fname" data-required="1">First Name:</label></th>
+              <th><label for="lname" data-required="1" spellcheck="false">姓: </label></th>
+              <td><input type="text" id="lname" name="lname" maxlength="20" size="10" data-required="1" spellcheck="false" required="required" /></td>
+            </tr>            
+            <tr>
+              <th><label for="fname" data-required="1">名:</label></th>
               <td><input type="text" id="fname" name="fname" maxlength="20" size="10" data-required="1" spellcheck="false" required="required" aria-busy="" /></td>
             </tr>
             <tr>
-              <th><label for="lname" data-required="1" spellcheck="false">Last Name: </label></th>
-              <td><input type="text" id="lname" name="lname" maxlength="20" size="10" data-required="1" spellcheck="false" required="required" /></td>
-            </tr>
-            <tr>
-              <th><label for="checkbox" data-required="1" spellcheck="false">Admitted? </label></th>
+              <th><label for="checkbox" data-required="1" spellcheck="false">是否录取 </label></th>
               <td><input id="admitted" type="checkbox" name="admitted" value="true" /></td>
             </tr>
             <tr>
-              <th><label for="checkbox" data-required="1" spellcheck="false">Graduate? </label></th>
+              <th><label for="checkbox" data-required="1" spellcheck="false">是否获取毕业证 </label></th>
               <td><input id="graduate" type="checkbox" name="graduate" value="true" /></td>
             </tr>
           </tbody>
